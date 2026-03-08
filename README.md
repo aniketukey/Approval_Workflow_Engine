@@ -1,7 +1,7 @@
 # WorkFlow Approval System
 
 
-## 🚀 Quick Run Instructions
+##  Quick Run Instructions
 
 The server will start on `http://localhost:8080`.
 
@@ -43,7 +43,7 @@ INSERT INTO USERS (EMAIL, PASSWORD, ROLE) VALUES ('admin@test.com', 'pass123', '
 
 ---
 
-## 🧪 Testing Flow
+##  Testing Flow
 1. **Register** a Requester and an Approver.
 2. **Login** as Requester to get a token.
 3. **Create** a request (`POST /requests/create?type=LEAVE`).
