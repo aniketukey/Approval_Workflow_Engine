@@ -1,19 +1,8 @@
 # WorkFlow Approval System
 
-A robust Spring Boot application for managing multi-step request approval workflows with role-based security.
 
 ## 🚀 Quick Run Instructions
 
-### 1. Prerequisites
-- **Java 21**
-- **Maven**
-- **Postman** (for API testing)
-
-### 2. Start the Application
-Run the following command from the project root:
-```bash
-./mvnw.cmd spring-boot:run
-```
 The server will start on `http://localhost:8080`.
 
 ### 3. Database Access (H2 Console)
@@ -24,9 +13,6 @@ The server will start on `http://localhost:8080`.
 
 ---
 
-## 🛠 Sample Workflow Configuration (SQL)
-
-Since the database is in-memory (H2), you must seed the workflow steps and users after every restart. Run these commands in the H2 Console:
 
 ```sql
 -- 1. Create Workflow Steps for 'LEAVE' requests
@@ -41,14 +27,7 @@ INSERT INTO USERS (EMAIL, PASSWORD, ROLE) VALUES ('admin@test.com', 'pass123', '
 
 ---
 
-## 🏗 Design Explanation
 
-### Core Architecture
-- **JWT Security**: All endpoints are secured using JSON Web Tokens. Users must register and login to receive a token.
-- **State Machine Workflow**: The `Request` entity tracks its progressive state via a `currentStep` pointer.
-- **Dynamic Steps**: The `ApprovalStep` table allows you to define 1-step, 2-step, or N-step workflows for different request types without changing code.
-
-### Security Rules
 1.  **Self-Approval Prevention**: A user cannot approve or reject a request they created.
 2.  **Role-Based Access**: Only a user holding the role assigned to the *current* step of a request can act on it.
 3.  **Admin Override**: Users with the `ADMIN` role can manually Approve or Reject any request at any time, bypassing standard steps.
